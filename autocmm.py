@@ -3,7 +3,7 @@ import datetime
 
 # Générer un message de commit automatique avec la date et l'heure
 commit_message=input("Entre un méssage pour le commit : ")
-
+#je veux voir ça
 if commit_message=="":
     commit_message = f"Auto-commit du : {datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')}"
 
