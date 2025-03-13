@@ -1,23 +1,52 @@
 import subprocess
 import datetime
 
-# Générer un message de commit automatique avec la date et l'heure
-commit_message=input("Entre un méssage pour le commit : ")
+# # Générer un message de commit automatique avec la date et l'heure
+# commit_message=input("Entre un méssage pour le commit : ")
 
-if commit_message=="":
-    commit_message = f"Auto-commit du : {datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')}"
+# if commit_message=="":
+#     commit_message = f"Auto-commit du : {datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')}"
 
-# Exécuter les commandes Git
-try:
-    subprocess.run(["git", "add", "."], check=True)
-    subprocess.run(["git", "commit", "-m", commit_message], check=True)
+# # Exécuter les commandes Git
+# try:
+#     subprocess.run(["git", "add", "."], check=True)
+#     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     
-    # Récupérer le nom de la branche actuelle
-    branch = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.strip()
+#     # Récupérer le nom de la branche actuelle
+#     branch = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.strip()
     
-    subprocess.run(["git", "push", "origin", branch], check=True)
+#     subprocess.run(["git", "push", "origin", branch], check=True)
 
-    print(f"✅ Commit et push effectués sur la branche '{branch}' message : {commit_message}")
+#     print(f"✅ Commit et push effectués sur la branche '{branch}' message : {commit_message}")
 
-except subprocess.CalledProcessError as e:
-    print(f"❌ Erreur lors de l'exécution de Git : {e}")
+# except subprocess.CalledProcessError as e:
+#     print(f"❌ Erreur lors de l'exécution de Git : {e}")
+
+
+
+def autoCommit(succ=""):
+    commit_message=input("Entre un méssage pour le commit : ")
+        
+    if commit_message=="":
+        commit_message = f"Auto-commit du : {datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')}"
+
+    try:
+        subprocess.run(["git", "add", "."], check=True)
+        subprocess.run(["git", "commit", "-m", commit_message], check=True)
+        
+        branch = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.strip()
+        
+        subprocess.run(["git", "push", "origin", branch], check=True)
+
+        succ = f"✅ Commit et push effectués sur la branche '{branch}' message : {commit_message}"
+        print(succ)
+
+    except subprocess.CalledProcessError as e:
+       succ = f"❌ Erreur lors de l'exécution de Git : {e}"
+       print(succ)
+        
+    return succ
+
+
+if __name__ == "__main__":
+    autoCommit()

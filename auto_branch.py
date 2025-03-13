@@ -36,6 +36,7 @@ try:
         sbp.run(["git", "checkout", "-b", Nom_branche], check=True)
         sbp.run(["git", "add", "."], check=True)
         sbp.run(["git", "commit", "-m", commit_message], check=True)
+        sbp.run(["git", "push", "-u", "origin", Nom_branche], check=True)
 
 
 except sbp.CalledProcessError as e:
