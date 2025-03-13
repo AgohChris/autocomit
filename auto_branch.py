@@ -19,9 +19,6 @@ def auto_branch(succes=""):
     succes="Succès"
     
     return succes
-    
-
-
 
 
 
