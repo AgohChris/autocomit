@@ -17,7 +17,7 @@ try:
     sbp.run(["git", "commit", "-m", commit_message], check=True)
     sbp.run(["git", "branch", "-M", "main"], check=True)
     sbp.run(["git", "remote", "add", "origin", remote_link], check=True)
-    sbp.run(["git", "push", "-u", "origin", "main", remote_link], check=True)
+    sbp.run(["git", "push", "-u", "origin", "main"], check=True)
     
     
     print(f"Succès Inittalisation réussis sur la branche 'main' message : {commit_message} ")
