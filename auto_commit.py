@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
 import subprocess
-import datetime
-
+import datetime as dt
 
 
 def autoCommit(succes=""):
     commit_message=input("Entre un méssage pour le commit : ")
         
     if commit_message=="":
-        commit_message = f"Auto-commit du : {datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')}"
+        Date = dt.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')
+        commit_message = f"Auto-commit du : {Date}"
 
     try:
         subprocess.run(["git", "add", "."], check=True)
