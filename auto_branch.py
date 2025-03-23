@@ -3,7 +3,7 @@
 import subprocess as sbp
 import datetime as dt
 
-
+#je veux voie qqchose
 Q1_Init = input("le dépot déja initialisé? Y/N :")
 
 def auto_branch(succes=""):
