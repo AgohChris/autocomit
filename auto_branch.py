@@ -36,7 +36,7 @@ try:
                 link_repos = input("Entre le lien du repositorie : ")
         
         sbp.run(["git", "init"], check=True)
-        sbp.run(["git", "remote", "add", "origin", ""], check=True)
+        sbp.run(["git", "remote", "add", "origin", link_repos], check=True)
 
         auto_branch()
 
