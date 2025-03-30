@@ -36,7 +36,8 @@ async def main():
         if shutil.which("pv"):
             commandeBoot = f"sudo dd if={Chemin} | pv | sudo dd of=/dev/r{Identifiant} bs=1m"
         else:
-            commandeBoot = f"sudo dd if={Chemin} of=/dev/r{Identifiant} bs=1m status=progress"
+            # Supprimer 'status=progress' pour macOS
+            commandeBoot = f"sudo dd if={Chemin} of=/dev/r{Identifiant} bs=1m"
             processus = sbp.Popen(commandeBoot, shell=True, stdout=sbp.PIPE, stderr=sbp.STDOUT, text=True)
             
             for ligne in processus.stdout:
@@ -44,10 +45,10 @@ async def main():
             
             processus.wait()
         
-        if processus.returncode !=0:
+        if processus.returncode != 0:
             raise sbp.CalledProcessError(processus.returncode, commandeBoot)
         
-        sbp.run(commandeBoot,shell=True, check=True)
+        sbp.run(commandeBoot, shell=True, check=True)
     
     except sbp.CalledProcessError as ex:
         print(f"❌ Erreur ❌ de le l'exécution de : {ex}")
