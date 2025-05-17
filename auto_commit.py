@@ -59,7 +59,7 @@ def autoCommit(succes=""):
 
     if commit_message == "rien d'extra.":
         Date = dt.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')
-        commit_message = f"Auto-commit du : {Date}"
+        commit_message = f"Auto-commit Gpt du : {Date}"
 
     if not commit_message:
         commit_message=input("Entre un méssage pour le commit : ")  
