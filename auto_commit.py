@@ -21,7 +21,8 @@ def genererMessageAvecChatGpt():
         diff_output = subprocess.run(["git", "diff", "--cached"], capture_output=True, text=True).stdout
 
         if not diff_output.strip():
-            return "rien d'extra."
+            msg = "rien d'extra."
+            return msg
         
         completion = openai.ChatCompletion.create(
             # extra_headers={
@@ -55,7 +56,10 @@ def genererMessageAvecChatGpt():
 
 def autoCommit(succes=""):
     commit_message= genererMessageAvecChatGpt()
-        
+
+    if commit_message == "rien d'extra.":
+        Date = dt.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')
+        commit_message = f"Auto-commit du : {Date}"
 
     if not commit_message:
         commit_message=input("Entre un méssage pour le commit : ")  
