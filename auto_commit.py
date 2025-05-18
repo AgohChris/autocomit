@@ -3,7 +3,7 @@
 import subprocess
 import datetime as dt
 
-
+# rev
 
 def autoCommit(succes=""):
     commit_message = input("Entre un méssage pour le commit : ")
